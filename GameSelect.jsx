@@ -15,6 +15,7 @@ import {
   Phone,
   Star,
   Sparkles,
+  useState,
 } from "lucide-react";
 
 // ---------------------------------------------------------------------------
@@ -456,6 +457,7 @@ const GlobalStyle = () => (
 // PROCEDURAL COVER ART ENGINE (with star on rating badge)
 // ---------------------------------------------------------------------------
 function CoverArt({ game, selected }) {
+  const [imgError, setImgError] = useState(false);
   const hue = hueFor(game.id);
   const hue2 = (hue + 45) % 360;
   const initials = game.title
@@ -467,40 +469,70 @@ function CoverArt({ game, selected }) {
 
   const hasRating = game.rating !== null && game.rating !== undefined;
   const rColor = hasRating ? ratingColor(game.rating) : "rgba(255,255,255,0.5)";
+  const imgUrl = `/images/covers/${game.id}.jpg`;
 
   return (
     <div className="relative w-full aspect-[3/4] overflow-hidden clip-tech bg-black">
+      {/* Real image — only rendered if no error */}
+      {!imgError ? (
+        <img
+          src={imgUrl}
+          alt={game.title}
+          onError={() => setImgError(true)}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+            selected ? "opacity-80 scale-105" : "opacity-90"
+          }`}
+          loading="lazy"
+        />
+      ) : null}
+
+      {/* Procedural fallback — shows when image fails or doesn't exist */}
+      {imgError && (
+        <>
+          <div
+            className="absolute inset-0 transition-opacity duration-500"
+            style={{
+              background: `linear-gradient(135deg, hsl(${hue}, 60%, 15%) 0%, hsl(${hue2}, 50%, 8%) 100%)`,
+              opacity: selected ? 0.8 : 0.5,
+            }}
+          />
+          <div
+            className="absolute inset-0 opacity-20 mix-blend-overlay"
+            style={{
+              backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.05) 10px, rgba(255,255,255,0.05) 11px)`,
+            }}
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span
+              className="font-display font-black text-4xl tracking-tighter select-none"
+              style={{
+                color: `hsla(${hue}, 80%, 75%, 0.9)`,
+                textShadow: `0 0 30px hsla(${hue}, 80%, 50%, 0.4)`,
+              }}
+            >
+              {initials}
+            </span>
+          </div>
+        </>
+      )}
+
+      {/* Selected overlay — always on top */}
       <div
-        className="absolute inset-0 transition-opacity duration-500"
-        style={{
-          background: `linear-gradient(135deg, hsl(${hue}, 60%, 15%) 0%, hsl(${hue2}, 50%, 8%) 100%)`,
-          opacity: selected ? 0.8 : 0.5,
-        }}
-      />
-      <div
-        className="absolute inset-0 opacity-20 mix-blend-overlay"
-        style={{
-          backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.05) 10px, rgba(255,255,255,0.05) 11px)`,
-        }}
-      />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <span
-          className="font-display font-black text-4xl tracking-tighter select-none"
-          style={{
-            color: `hsla(${hue}, 80%, 75%, 0.9)`,
-            textShadow: `0 0 30px hsla(${hue}, 80%, 50%, 0.4)`,
-          }}
-        >
-          {initials}
-        </span>
+        className={`absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-all duration-300 ${
+          selected ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <div className="w-10 h-10 rounded-full bg-[#ff00aa] flex items-center justify-center shadow-[0_0_20px_rgba(255,0,170,0.6)]">
+          <Check size={22} strokeWidth={3} color="#000" />
+        </div>
       </div>
 
-      {/* Top-left: PS5 tag */}
+      {/* PS5 tag — always visible */}
       <div className="absolute top-3 left-3 font-display text-[9px] tracking-widest text-white/60 bg-black/40 px-2 py-1 rounded backdrop-blur-md border border-white/5">
         PS5 · {game.year}
       </div>
 
-      {/* Top-right: Rating badge WITH star */}
+      {/* Rating badge — always visible */}
       <div
         className="absolute top-3 right-3 flex items-center gap-1 font-display font-black text-[11px] tracking-wider px-2 py-1 rounded border backdrop-blur-md"
         style={{
@@ -509,21 +541,9 @@ function CoverArt({ game, selected }) {
           borderColor: rColor + "55",
           boxShadow: hasRating ? `0 0 12px ${rColor}40` : "none",
         }}
-        title={hasRating ? `Metacritic Score: ${game.rating}` : "No score yet"}
       >
         <Star size={9} fill={hasRating ? rColor : "none"} strokeWidth={2.5} />
         <span>{hasRating ? game.rating : "—"}</span>
-      </div>
-
-      {/* Selected overlay */}
-      <div
-        className={`absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-all duration-300 ${
-          selected ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        <div className="w-10 h-10 rounded-full bg-[#ff00aa] flex items-center justify-center shadow-[0_0_20px_rgba(255,0,170,0.6)] transform transition-transform duration-300 scale-100">
-          <Check size={22} strokeWidth={3} color="#000" />
-        </div>
       </div>
     </div>
   );
