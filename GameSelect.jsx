@@ -40,7 +40,7 @@ const BASE_GAMES = [
   { id: "ret", title: "Returnal", genre: "Roguelike Shooter", year: 2021, studio: "PLAYSTATION", rating: 86 },
   { id: "gt7", title: "Gran Turismo 7", genre: "Racing Sim", year: 2022, studio: "PLAYSTATION", rating: 87 },
   { id: "tlou", title: "The Last of Us Part I", genre: "Action / Horror", year: 2022, studio: "PLAYSTATION", rating: 89 },
-  { id: "ds2", title: "Death Stranding: Director's Cut", genre: "Action", year: 2021, studio: "PLAYSTATION", rating: 86 },
+  { id: "dsdc", title: "Death Stranding: Director's Cut", genre: "Action", year: 2021, studio: "PLAYSTATION", rating: 86 },
   { id: "bg3", title: "Baldur's Gate 3", genre: "RPG", year: 2023, studio: "MULTIPLATFORM", rating: 96 },
   { id: "cp77", title: "Cyberpunk 2077", genre: "RPG", year: 2020, studio: "MULTIPLATFORM", rating: 86 },
   { id: "re4", title: "Resident Evil 4", genre: "Survival Horror", year: 2023, studio: "MULTIPLATFORM", rating: 93 },
@@ -61,7 +61,7 @@ const BASE_GAMES = [
   { id: "gr", title: "Ghostrunner", genre: "Action / Platformer", year: 2020, studio: "MULTIPLATFORM", rating: 79 },
   { id: "wukong", title: "Black Myth: Wukong", genre: "Action RPG", year: 2024, studio: "MULTIPLATFORM", rating: 86 },
   { id: "ff7rb", title: "Final Fantasy VII Rebirth", genre: "Action RPG", year: 2024, studio: "PLAYSTATION", rating: 92 },
-  { id: "lotf", title: "Lies of P", genre: "Action RPG", year: 2023, studio: "MULTIPLATFORM", rating: 84 },
+  { id: "lop", title: "Lies of P", genre: "Action RPG", year: 2023, studio: "MULTIPLATFORM", rating: 84 },
   { id: "acm", title: "Armored Core VI", genre: "Action / Mech", year: 2023, studio: "MULTIPLATFORM", rating: 86 },
   { id: "coc", title: "Call of Duty: MWIII", genre: "Shooter", year: 2023, studio: "MULTIPLATFORM", rating: 71 },
   { id: "gta5", title: "Grand Theft Auto V", genre: "Open World", year: 2013, studio: "MULTIPLATFORM", rating: 97 },
@@ -80,7 +80,7 @@ const BASE_GAMES = [
   { id: "ufc5", title: "UFC 5", genre: "Sports", year: 2023, studio: "MULTIPLATFORM", rating: 77 },
   { id: "ufc6", title: "UFC 6", genre: "Sports", year: 2025, studio: "MULTIPLATFORM", rating: null },
   { id: "007fl", title: "007: First Light - Deluxe Edition", genre: "Action / Adventure", year: 2025, studio: "MULTIPLATFORM", rating: null },
-  { id: "acbf", title: "Assassin's Creed: Black Flag - Resynced", genre: "Action / Adventure", year: 2025, studio: "MULTIPLATFORM", rating: null },
+  { id: "acbfr", title: "Assassin's Creed: Black Flag - Resynced", genre: "Action / Adventure", year: 2025, studio: "MULTIPLATFORM", rating: null },
   { id: "cd", title: "Crimson Desert", genre: "Action RPG", year: 2025, studio: "MULTIPLATFORM", rating: null },
   { id: "bf6", title: "Battlefield 6", genre: "Shooter", year: 2025, studio: "MULTIPLATFORM", rating: null },
   { id: "fh6", title: "Forza Horizon 6", genre: "Racing Sim", year: 2025, studio: "MULTIPLATFORM", rating: null },
@@ -116,6 +116,7 @@ const BASE_GAMES = [
   { id: "bp", title: "Blue Prince", genre: "RPG", year: 2025, studio: "MULTIPLATFORM", rating: null },
   { id: "bop6", title: "Call of Duty: Black Ops 6", genre: "Shooter", year: 2024, studio: "MULTIPLATFORM", rating: 80 },
   { id: "comw2", title: "Call of Duty: MWII - Modern Warfare II", genre: "Shooter", year: 2022, studio: "MULTIPLATFORM", rating: 75 },
+  { id: "comw3", title: "Call of Duty: MWII - Modern Warfare III", genre: "Shooter", year: 2023, studio: "MULTIPLATFORM", rating: 57 },
   { id: "crnd", title: "Cronos: The New Dawn", genre: "Survival Horror", year: 2025, studio: "MULTIPLATFORM", rating: null },
   { id: "dispatch", title: "Dispatch", genre: "Adventure", year: 2025, studio: "MULTIPLATFORM", rating: null },
   { id: "doomda", title: "Doom: The Dark Ages", genre: "Shooter", year: 2025, studio: "MULTIPLATFORM", rating: 85 },
@@ -175,6 +176,8 @@ const BASE_GAMES = [
   { id: "ud", title: "Until Dawn", genre: "Survival Horror", year: 2024, studio: "MULTIPLATFORM", rating: null },
   { id: "wff", title: "Wuchang: Fallen Feathers", genre: "Action RPG", year: 2025, studio: "MULTIPLATFORM", rating: null },
   { id: "yakld", title: "Yakuza: Like a Dragon", genre: "RPG", year: 2020, studio: "MULTIPLATFORM", rating: 83 },
+  { id: "balatro", title: "BALATRO", genre: "Strategy / Tactics", year: 2024, studio: "MULTIPLATFORM", rating: 92 },
+
 ];
 
 function buildGameLibrary(baseGames, customGames) {
@@ -228,6 +231,7 @@ const GENRE_FA = {
   "Action / Stealth": "اکشن / مخفی‌کاری",
   "Action / Roguelike": "اکشن / روگ‌لایک",
   "Adventure / Horror": "ماجراجویی / ترسناک",
+  "Strategy / Tactics": "استراتژی / تاکتیکی",  
 };
 const genreFa = (g) => GENRE_FA[g] || g;
 
