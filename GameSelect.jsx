@@ -39,7 +39,6 @@ const BASE_GAMES = [
   { id: "ret", title: "Returnal", genre: "Roguelike Shooter", year: 2021, studio: "PLAYSTATION", rating: 86 },
   { id: "gt7", title: "Gran Turismo 7", genre: "Racing Sim", year: 2022, studio: "PLAYSTATION", rating: 87 },
   { id: "tlou", title: "The Last of Us Part I", genre: "Action / Horror", year: 2022, studio: "PLAYSTATION", rating: 89 },
-  { id: "tlou2r", title: "The Last of Us Part II", genre: "Action / Horror", year: 2024, studio: "PLAYSTATION", rating: 89 },
   { id: "dsdc", title: "Death Stranding: Director's Cut", genre: "Action", year: 2021, studio: "PLAYSTATION", rating: 86 },
   { id: "bg3", title: "Baldur's Gate 3", genre: "RPG", year: 2023, studio: "MULTIPLATFORM", rating: 96 },
   { id: "cp77", title: "Cyberpunk 2077", genre: "RPG", year: 2020, studio: "MULTIPLATFORM", rating: 86 },
