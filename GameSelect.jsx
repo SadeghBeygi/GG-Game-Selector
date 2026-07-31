@@ -95,7 +95,7 @@ const BASE_GAMES = [
   { id: "mk1", title: "Mortal Kombat 1", genre: "Fighting", year: 2023, studio: "MULTIPLATFORM", rating: 82 },
   { id: "saros", title: "Saros", genre: "Roguelike Shooter", year: 2025, studio: "PLAYSTATION", rating: null },
   { id: "ds2otb", title: "Death Stranding 2: On the Beach", genre: "Action", year: 2025, studio: "PLAYSTATION", rating: null },
-  { id: "tlou2r", title: "The Last of Us: Part II - Remastered", genre: "Action / Horror", year: 2024, studio: "PLAYSTATION", rating: null },
+  { id: "tlou2", title: "The Last of Us: Part II - Remastered", genre: "Action / Horror", year: 2024, studio: "PLAYSTATION", rating: null },
   { id: "bmyw", title: "Black Myth: Wukong", genre: "Action RPG", year: 2024, studio: "MULTIPLATFORM", rating: 86 },
   { id: "bop7", title: "Call of Duty: Black Ops 7", genre: "Shooter", year: 2025, studio: "MULTIPLATFORM", rating: null },
   { id: "dgr", title: "Days Gone: Remastered", genre: "Action / Adventure", year: 2024, studio: "PLAYSTATION", rating: null },
